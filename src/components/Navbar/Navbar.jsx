@@ -2,10 +2,10 @@ import { ShoppingBagIcon, MagnifyingGlassIcon, ChevronDownIcon } from '@heroicon
 import {Link} from 'react-router-dom';
 const Navbar = () => {
   return (
-    <header className='bg-[#f4f4f4] '>
+    <header className='bg-[#f4f4f4]'>
         <div className='px-10 mx-auto max-w-[1300px]'>
             <div className='flex'>
-                <Link to="/" className='text-[48px] font-bold flex items-center'>
+                <Link to="/" className='flex items-center'>
                     <img src='img/logo.png' alt='' className='h-[80%]'></img>
                 </Link>
                 <div className='flex mx-auto items-center'>
@@ -24,7 +24,7 @@ const Navbar = () => {
                                 <div className='flex flex-col bg-[#f4f4f4] font-medium text-lg py-1 min-w-[122px]'>
                                     <Link className='whitespace-nowrap py-1.5 pl-4 hover:pl-6 hover:bg-[#e8e8e1] transition-all duration-200' to="/products/1">WOMEN</Link>
                                     <Link className='whitespace-nowrap py-1.5 pl-4 hover:pl-6 hover:bg-[#e8e8e1] transition-all duration-200' to="/products/2">MEN</Link>
-                                    <Link className='whitespace-nowrap py-1.5 pl-4 hover:pl-6 hover:bg-[#e8e8e1] transition-all duration-200' to="/products/3">CHILDERN</Link>
+                                    <Link className='whitespace-nowrap py-1.5 pl-4 hover:pl-6 hover:bg-[#e8e8e1] transition-all duration-200' to="/products/3">CHILDREN</Link>
                                 </div>
                             </div>
                         </li>
