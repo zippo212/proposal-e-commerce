@@ -24,7 +24,7 @@ const Navbar = () => {
                                 <div className='flex flex-col bg-[#f4f4f4] font-medium text-lg py-1 min-w-[122px]'>
                                     <Link className='whitespace-nowrap py-1.5 pl-4 hover:pl-6 hover:bg-[#e8e8e1] transition-all duration-200' to="/products/1">WOMEN</Link>
                                     <Link className='whitespace-nowrap py-1.5 pl-4 hover:pl-6 hover:bg-[#e8e8e1] transition-all duration-200' to="/products/2">MEN</Link>
-                                    <Link className='whitespace-nowrap py-1.5 pl-4 hover:pl-6 hover:bg-[#e8e8e1] transition-all duration-200' to="/products/3">CHILDREN</Link>
+                                    <Link className='whitespace-nowrap py-1.5 pl-4 hover:pl-6 hover:bg-[#e8e8e1] transition-all duration-200' to="/products/3">ACCESSORIES</Link>
                                 </div>
                             </div>
                         </li>

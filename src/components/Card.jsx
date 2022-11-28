@@ -2,10 +2,10 @@ import { Link } from "react-router-dom"
 
 const Card = ({data}) => {
   return (
-    <div className='w-[25%] pl-2.5'>
+    <div className='pl-2.5'>
         <div className='mb-10'>
             <Link to='/'>
-                <div className='relative'>
+                <div className='relative h-96 sm:h-full w-[301px] sm:w-full'>
                     <div className="h-full w-full">
                         <img className='h-full w-full' src={data.img} alt=''></img>
                     </div>

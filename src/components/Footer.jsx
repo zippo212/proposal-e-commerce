@@ -39,7 +39,7 @@ const Footer = () => {
                 <Link to="/products/2">MEN</Link>
               </li>
               <li className='py-1'>
-                <Link to="/products/3">CHILDREN</Link>
+                <Link to="/products/3">ACCESSORIES</Link>
               </li>
             </ul>
           </div>

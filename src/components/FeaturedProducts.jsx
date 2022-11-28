@@ -1,4 +1,3 @@
-import React from 'react'
 import Card from './Card'
 
 const FeaturedProducts = ({type}) => {
@@ -45,7 +44,7 @@ const data = [
                 <h2 className='text-5xl font-bold'>{type} PRODUCTS</h2>
             </div>
         </div>
-        <div className='px-10 mx-auto flex'>
+        <div className='overflow-x-scroll sm:overflow-hidden px-2 sm:px-10 sm:mx-auto -ml-2.5 sm:ml:0 flex'>
             {data.map(item => (<Card data={item} key={item.id}/>))}
         </div>
     </div>
