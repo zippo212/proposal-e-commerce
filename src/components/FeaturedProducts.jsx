@@ -45,7 +45,7 @@ const data = [
             </div>
         </div>
         <div className='overflow-x-scroll sm:overflow-hidden px-2 sm:px-10 sm:mx-auto -ml-2.5 sm:ml:0 flex'>
-            {data.map(item => (<Card data={item} key={item.id}/>))}
+            {data.map(item => (<Card data={item} key={item.id} size={['h-96','w-[301px]']}/>))}
         </div>
     </div>
   )

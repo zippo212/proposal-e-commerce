@@ -33,13 +33,13 @@ const Footer = () => {
                 <Link to="/">HOME</Link>
               </li>
               <li className='py-1'>
-                <Link to="/products/1">WOMEN</Link>
+                <Link to="/products/1" state={'Women'}>WOMEN</Link>
               </li>
               <li className='py-1'>
-                <Link to="/products/2">MEN</Link>
+                <Link to="/products/2" state={'Men'}>MEN</Link>
               </li>
               <li className='py-1'>
-                <Link to="/products/3">ACCESSORIES</Link>
+                <Link to="/products/3" state={'Accessories'}>ACCESSORIES</Link>
               </li>
             </ul>
           </div>
