@@ -1,9 +1,12 @@
 import { useLocation } from "react-router-dom";
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline'
 import Card from "../../components/Card";
+import FilterDrawer from "../../components/FilterDrawer";
+import { useState } from "react";
 
 
 const Products = () => {
+  const [drawerState, setDrawerState] = useState(false);
 
   const data = [
     {
@@ -43,7 +46,7 @@ const Products = () => {
   const location = useLocation();
   const title = location.state;
   return (
-  <div className="">
+  <div className="relative">
     <header className="relative">
         <img className='w-full h-full' src="../img/prod.jpg" alt=""></img>
         <span className="uppercase absolute top-0 bottom-0 left-0 right-0 m-auto text-7xl h-20 w-fit text-white font-bold tracking-wide">{title}</span>
@@ -51,7 +54,9 @@ const Products = () => {
     <div className="py-14 px-2 md:px-10 mx-auto max-w-[1300px]">
       <div className="mb-5">
         <div className="pl-2.5 xl:pl-7">
-          <button className="px-5 border border-[#e8e8e1] h-11 font-semibold flex items-center">
+          <button className="px-5 border border-[#e8e8e1] h-11 font-semibold flex items-center"
+          onClick={() => setDrawerState(!drawerState)}
+          >
             <AdjustmentsHorizontalIcon className="h-7 w-7 mr-2.5"/>
             <span className="block">FILTER</span> 
           </button>
@@ -61,6 +66,7 @@ const Products = () => {
         {data.map(item => (<Card data={item} key={item.id} size={['h-full','w-full']}/>))}
       </div>
     </div>
+    <FilterDrawer state={drawerState} setState={setDrawerState}/>
   </div>
   )
 }

@@ -10,11 +10,9 @@ const Navbar = () => {
                 </Link>
                 <div className='flex mx-auto items-center'>
                     <ul className='flex text-xl font-semibold'>
-                        <li className='py-7 px-5 hover:bg-[#e8e8e1] transition-all duration-200 cursor-pointer'>
-                            <Link to="/">
+                        <Link to="/" className='py-7 px-5 hover:bg-[#e8e8e1] transition-all duration-200 cursor-pointer'>
                                 HOME
-                            </Link>
-                        </li>
+                        </Link>
                         <li className='py-7 px-5 hover:bg-[#e8e8e1] relative group z-10 transition-all duration-200 cursor-pointer'>
                             <div className='flex items-center'>
                                 APPAREL
