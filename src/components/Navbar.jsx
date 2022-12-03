@@ -1,12 +1,14 @@
 import { ShoppingBagIcon, MagnifyingGlassIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import {Link} from 'react-router-dom';
+import logo from '../img/logo.png';
+
 const Navbar = () => {
   return (
     <header className='bg-[#f4f4f4]'>
         <div className='px-10 mx-auto max-w-[1300px]'>
             <div className='flex'>
                 <Link to="/" className='flex items-center'>
-                    <img src='img/logo.png' alt='' className='h-[80%]'></img>
+                    <img src={logo} alt='' className='h-[80%]'></img>
                 </Link>
                 <div className='flex mx-auto items-center'>
                     <ul className='flex text-xl font-semibold'>

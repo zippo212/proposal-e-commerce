@@ -1,12 +1,17 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline'
 import Card from "../../components/Card";
 import FilterDrawer from "../../components/FilterDrawer";
 import { useState } from "react";
+import heroImg from '../../img/prod.jpg';
 
 
 const Products = () => {
   const [drawerState, setDrawerState] = useState(false);
+
+  const catId = parseInt((useParams().id))
+  const [rangeValue,setRangeValue] = useState(200)
+  const [sort,setSort] = useState(null)
 
   const data = [
     {
@@ -48,10 +53,10 @@ const Products = () => {
   return (
   <div className="relative">
     <header className="relative">
-        <img className='w-full h-full' src="../img/prod.jpg" alt=""></img>
+        <img className='w-full h-full' src={heroImg} alt=""></img>
         <span className="uppercase absolute top-0 bottom-0 left-0 right-0 m-auto text-7xl h-20 w-fit text-white font-bold tracking-wide">{title}</span>
     </header>
-    <div className="py-14 px-2 md:px-10 mx-auto max-w-[1300px]">
+    <div className={`py-7 sm:py-14 px-2 md:px-10 mx-auto max-w-[1300px] ${drawerState ? 'blur-sm' : 'blur-none'}`}>
       <div className="mb-5">
         <div className="pl-2.5 xl:pl-7">
           <button className="px-5 border border-[#e8e8e1] h-11 font-semibold flex items-center"
@@ -64,9 +69,11 @@ const Products = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {data.map(item => (<Card data={item} key={item.id} size={['h-full','w-full']}/>))}
-      </div>
+      </div> 
     </div>
-    <FilterDrawer state={drawerState} setState={setDrawerState}/>
+    <FilterDrawer state={drawerState} setState={setDrawerState} rangeValue={rangeValue} setRangeValue={setRangeValue}
+      setSort={setSort}
+    />
   </div>
   )
 }

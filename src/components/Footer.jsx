@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { EnvelopeIcon } from '@heroicons/react/24/outline'
 import { SocialIcon } from 'react-social-icons';
+import logo from '../img/logo.png';
+
 
 
 const Footer = () => {
@@ -11,7 +13,7 @@ const Footer = () => {
           <div className='w-[25%] pl-7'>
               <div className='mb-6'>
                 <Link to="/" className='flex items-center'>
-                    <img src='img/logo.png' alt='' className='h-full'></img>
+                    <img src={logo} alt='' className='h-full'></img>
                 </Link>
               </div>
               <ul className='flex'>

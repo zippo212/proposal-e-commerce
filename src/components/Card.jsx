@@ -4,7 +4,7 @@ const Card = ({data,size}) => {
   return (
     <div className='pl-2.5'>
         <div className='mb-10'>
-            <Link to='/'>
+            <Link to={`/product/${data.id}`}>
                 <div className={`relative ${size[0]} sm:h-full ${size[1]} sm:w-full`}>
                     <div className="h-full w-full">
                         <img className='h-full w-full' src={data.img} alt=''></img>
