@@ -1,8 +1,12 @@
 import { ShoppingBagIcon, MagnifyingGlassIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../img/logo.png';
+import Cart from './Cart';
 
 const Navbar = () => {
+    const [drawerState, setDrawerState] = useState(false);
+
   return (
     <header className='bg-[#f4f4f4]'>
         <div className='px-10 mx-auto max-w-[1300px]'>
@@ -34,13 +38,16 @@ const Navbar = () => {
                     <div className='py-7 px-5 cursor-pointer'>
                         <MagnifyingGlassIcon className="h-7 w-7"/>
                     </div>
-                    <div className='py-7 px-5 cursor-pointer relative'>
+                    <div className='py-7 px-5 cursor-pointer relative'
+                    onClick={()=>setDrawerState(!drawerState)}
+                    >
                         <ShoppingBagIcon className="h-7 w-7"/>
                         <span className='w-4 h-4 rounded-full bg-[#ff4f33] absolute top-[46px] right-[16px] border border-white text-white text-xs font-medium flex items-center justify-center'>6</span>
                     </div>
                 </div>
             </div>
         </div>
+        <Cart state={drawerState} setState={setDrawerState}/>
     </header>
   )
 }

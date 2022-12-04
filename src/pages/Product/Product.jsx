@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
+import { ArrowLongRightIcon,PlusSmallIcon,MinusSmallIcon } from '@heroicons/react/24/outline'
 import {
   FacebookIcon,
   TwitterIcon,
@@ -17,7 +17,13 @@ const data = [
 const Product = () => {
   const [currentImg, setCurrentImg] = useState(100);
   const [size, setSize] = useState('S');
+  const [quantity, setQuantity] = useState(1);
 
+  const handleInput = (value) => {
+    if(Number.isInteger(+value)) {
+      setQuantity(+value)
+    } else return
+  }
 
   return (
     <div className='py-7 sm:py-14 px-2 sm:px-10 mx-auto max-w-[1300px]'>
@@ -85,6 +91,23 @@ const Product = () => {
                       </li>
                   </ul>
                 </div>
+              </div>
+              <div className='mb-6'>
+                  <div className='border border-[#e8e8e1] flex justify-between h-[50px] max-w-[35%] sm:max-w-[25%]'>
+                    <button className='px-2.5 group hover:bg-[#e8e8e1]'
+                    onClick={()=> setQuantity((prev) => (prev <= 1 ? 1 : prev - 1))}
+                    >
+                      <MinusSmallIcon className="h-5 group-hover:text-white"/>
+                    </button>
+                    <input type="text" className="w-[50%] text-center font-medium text-lg" value={quantity} min="0" pattern="[0-9]*"
+                      onChange={(e)=>handleInput(e.target.value)}
+                    />
+                    <button className='px-2.5 group hover:bg-[#e8e8e1]'
+                    onClick={()=> setQuantity((prev) => (prev + 1))}
+                    >
+                      <PlusSmallIcon className="h-5 group-hover:text-white"/>
+                    </button>
+                  </div>
               </div>
               <div className='mb-6'>
                 <button className='border border-black py-2 px-4 w-[50%] relative group overflow-hidden'>
