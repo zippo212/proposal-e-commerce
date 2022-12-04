@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const Card = ({data,size}) => {
   return (
-    <div className='pl-2.5'>
+    <div className='sm:pl-2.5'>
         <div className='mb-10'>
             <Link to={`/product/${data.id}`}>
                 <div className={`relative ${size[0]} sm:h-full ${size[1]} sm:w-full`}>

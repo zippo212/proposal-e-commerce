@@ -9,26 +9,26 @@ import logo from '../img/logo.png';
 const Footer = () => {
   return (
     <footer className='bg-[#f4f4f4] pt-20 pb-10'>
-        <div className='px-10 mx-auto max-w-[1300px] flex'>
-          <div className='w-[25%] pl-7'>
-              <div className='mb-6'>
+        <div className='px-10 mx-auto max-w-[1300px] flex flex-col md:flex-row items-start'>
+          <div className='md:w-[25%] md:pl-7 flex items-center md:flex-col'>
+              <div className='mb-6 mr-6 md:mr-0'>
                 <Link to="/" className='flex items-center'>
                     <img src={logo} alt='' className='h-full'></img>
                 </Link>
               </div>
               <ul className='flex'>
                 <li>
-                <SocialIcon url="https://instagram.com/" fgColor="#aeaeae" bgColor='transparent' style={{ height: 42, width: 42 }}/>
+                <SocialIcon url="https://instagram.com/" fgColor="#aeaeae" bgColor='transparent' className='h-10 w-10' />
                 </li>
                 <li>
-                <SocialIcon url="https://twitter.com/" fgColor="#aeaeae" bgColor='transparent' style={{ height: 42, width: 42 }}/>
+                <SocialIcon url="https://twitter.com/" fgColor="#aeaeae" bgColor='transparent' className='h-10 w-10'/>
                 </li>
                 <li>
-                <SocialIcon url="https://facebook.com/" fgColor="#aeaeae" bgColor='transparent' style={{ height: 42, width: 42 }}/>
+                <SocialIcon url="https://facebook.com/" fgColor="#aeaeae" bgColor='transparent' className='h-10 w-10'/>
                 </li>
               </ul>
           </div>
-          <div className='w-[20%] pl-7'>
+          <div className='md:w-[20%] md:pl-7 pb-5 md:pb-0'>
             <p className='text-2xl font-bold border-b border-[#aeaeae] pb-2 mb-4'>QUICK LINKS</p>
             <ul className='text-xl font-light'>
               <li className='py-1'>
@@ -45,7 +45,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className='w-[20%] pl-7'>
+          <div className='md:w-[20%] md:pl-7 pb-5 md:pb-0'>
             <p className='text-2xl font-bold border-b border-[#aeaeae] pb-2 mb-4'>SUPPORT</p>
             <ul className='text-xl font-light'>
               <li className='py-1'>TERMS OF USE</li>
@@ -54,7 +54,7 @@ const Footer = () => {
               <li className='py-1'>CONTACT US</li>
             </ul>
           </div>
-          <div className='w-[33%] pl-7'>
+          <div className='md:w-[33%] md:pl-7 pb-5 md:pb-0'>
             <p className='text-2xl font-bold border-b border-[#aeaeae] pb-2 mb-4'>JOIN PROPOSAL</p>
             <div>
               <p className='mb-4 text-xl font-light'>Subscribe to get the latest updates.</p>

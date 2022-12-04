@@ -58,7 +58,7 @@ const Products = () => {
     </header>
     <div className={`py-7 sm:py-14 px-2 md:px-10 mx-auto max-w-[1300px] ${drawerState ? 'blur-sm' : 'blur-none'}`}>
       <div className="mb-5">
-        <div className="pl-2.5 xl:pl-7">
+        <div className="sm:pl-2.5 xl:pl-7">
           <button className="px-5 border border-[#e8e8e1] h-11 font-semibold flex items-center"
           onClick={() => setDrawerState(!drawerState)}
           >

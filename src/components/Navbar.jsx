@@ -1,20 +1,23 @@
-import { ShoppingBagIcon, MagnifyingGlassIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import { ShoppingBagIcon, MagnifyingGlassIcon, ChevronDownIcon,Bars3CenterLeftIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../img/logo.png';
 import Cart from './Cart';
+import MobileMenu from './MobileMenu';
 
 const Navbar = () => {
     const [drawerState, setDrawerState] = useState(false);
+    const [mobileState, setMobileState] = useState(false);
+
 
   return (
     <header className='bg-[#f4f4f4]'>
-        <div className='px-10 mx-auto max-w-[1300px]'>
-            <div className='flex'>
+        <div className='px-5 sm:px-10 mx-auto max-w-[1300px]'>
+            <div className='flex justify-between sm:justify-start w-full'>
                 <Link to="/" className='flex items-center'>
                     <img src={logo} alt='' className='h-[80%]'></img>
                 </Link>
-                <div className='flex mx-auto items-center'>
+                <div className='hidden sm:flex mx-auto items-center'>
                     <ul className='flex text-xl font-semibold'>
                         <Link to="/" className='py-7 px-5 hover:bg-[#e8e8e1] transition-all duration-200 cursor-pointer'>
                                 HOME
@@ -38,6 +41,11 @@ const Navbar = () => {
                     <div className='py-7 px-5 cursor-pointer'>
                         <MagnifyingGlassIcon className="h-7 w-7"/>
                     </div>
+                    <div className='py-7 px-5 cursor-pointer sm:hidden'
+                    onClick={()=>setMobileState(!mobileState)}
+                    >
+                        <Bars3CenterLeftIcon className="h-7 w-7"/>
+                    </div>
                     <div className='py-7 px-5 cursor-pointer relative'
                     onClick={()=>setDrawerState(!drawerState)}
                     >
@@ -48,6 +56,7 @@ const Navbar = () => {
             </div>
         </div>
         <Cart state={drawerState} setState={setDrawerState}/>
+        <MobileMenu state={mobileState} setState={setMobileState}/> 
     </header>
   )
 }
