@@ -1,23 +1,24 @@
 import { Link } from "react-router-dom"
+import ph from '../img/ph.png';
 
-const Card = ({data,size}) => {
+const Card = ({data,size,loading}) => {
   return (
-    <div className='sm:pl-2.5'>
+    <div className='pl-2.5'>
         <div className='mb-10'>
-            <Link to={`/product/${data.id}`}>
+            <Link to={`/product/${data?.id}`}>
                 <div className={`relative ${size[0]} sm:h-full ${size[1]} sm:w-full`}>
                     <div className="h-full w-full">
-                        <img className='h-full w-full' src={data.img} alt=''></img>
+                        <img className='h-full w-full' src={loading ? ph : process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img?.data?.attributes.url} alt=''></img>
                     </div>
                     <div className='absolute top-0 h-full w-full opacity-0 hover:opacity-100 transition-all ease-in-out duration-400'>
-                        <img className='h-full w-full' src={data.img2} alt=''></img>
+                        <img className='h-full w-full' src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img2?.data?.attributes.url} alt=''></img>
                     </div>
                     <div className='absolute bg-white bottom-0 py-2.5 pl-3.5 pr-5'>
                         <span className='text-2xl leading-5'>
-                            ${data.price}
+                            ${data?.attributes.price}
                         </span>
                     </div>
-                    {data.isNew ? 
+                    {data?.attributes.isNew ? 
                     <div className="absolute top-0 right-0 bg-[#282828] font-bold lg:font-extrabold text-white text-[0.5rem] lg:text-xs py-0.5 md:py-1 pl-1 lg:pl-2 pr-1.5 lg:pr-3 uppercase font-sans tracking-widest">
                         New Season
                     </div>
@@ -25,7 +26,7 @@ const Card = ({data,size}) => {
                 </div>
                 <div className='relative'>
                     <div className='tracking-[0.2em] font-light text-[#1c1d1d]'>PROPOSAL</div>
-                    <div className='uppercase text-2xl leading-6 font-semibold'>{data.title}</div>
+                    <div className='uppercase text-2xl leading-6 font-semibold'>{data?.attributes.title}</div>
                 </div>
             </Link>
         </div>

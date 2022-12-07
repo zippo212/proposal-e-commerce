@@ -35,13 +35,10 @@ const Footer = () => {
                 <Link to="/">HOME</Link>
               </li>
               <li className='py-1'>
-                <Link to="/products/1" state={'Women'}>WOMEN</Link>
+                <Link to="/products/2" state={'Women'}>WOMEN</Link>
               </li>
               <li className='py-1'>
-                <Link to="/products/2" state={'Men'}>MEN</Link>
-              </li>
-              <li className='py-1'>
-                <Link to="/products/3" state={'Accessories'}>ACCESSORIES</Link>
+                <Link to="/products/1" state={'Men'}>MEN</Link>
               </li>
             </ul>
           </div>

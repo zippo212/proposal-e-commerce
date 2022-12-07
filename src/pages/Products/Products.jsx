@@ -2,56 +2,40 @@ import { useLocation, useParams } from "react-router-dom";
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline'
 import Card from "../../components/Card";
 import FilterDrawer from "../../components/FilterDrawer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import heroImg from '../../img/prod.jpg';
+import useFetch from "../../hooks/useFetch";
 
 
 const Products = () => {
   const [drawerState, setDrawerState] = useState(false);
 
   const catId = parseInt((useParams().id))
-  const [rangeValue,setRangeValue] = useState(200)
+  const [rangeValue,setRangeValue] = useState(400)
   const [sort,setSort] = useState(null)
+  const [selectedSubCats, setselectedSubCats] = useState([]);
 
-  const data = [
-    {
-        id:1,
-        img:'https://images.asos-media.com/products/asos-design-twill-dad-wool-mix-coat-in-red/202992301-2?$n_640w$&wid=513&fit=constrain',
-        img2:'https://images.asos-media.com/products/asos-design-twill-dad-wool-mix-coat-in-red/202992301-1-red?$n_320w$&wid=317&fit=constrain',
-        title:'twill dad wool mix coat in red',
-        isNew:true,
-        price:64.99,
-    },
-    {
-        id:2,
-        img:'https://images.asos-media.com/products/asos-design-oversized-bonded-borg-hero-aviator-jacket-in-black/203294822-1-blackandcream?$n_640w$&wid=513&fit=constrain',
-        img2:'https://images.asos-media.com/products/asos-design-oversized-bonded-borg-hero-aviator-jacket-in-black/203294822-4?$n_640w$&wid=513&fit=constrain',
-        title:'oversized bonded aviator jacket',
-        isNew:true,
-        price:110.99,
-    },
-    {
-        id:3,
-        img:'https://images.asos-media.com/products/asos-design-oversized-borg-western-jacket-in-black/202822022-1-black?$n_640w$&wid=513&fit=constrain',
-        img2:'https://images.asos-media.com/products/asos-design-oversized-borg-western-jacket-in-black/202822022-4?$n_640w$&wid=513&fit=constrain',
-        title:'oversized borg western jacket',
-        isNew:false,
-        price:69.99,
-    },
-    {
-        id:4,
-        img:'https://images.asos-media.com/products/asos-design-knitted-textured-rib-jumper-with-all-over-floral-in-lilac/201574346-1-lilac?$n_640w$&wid=513&fit=constrain',
-        img2:'https://images.asos-media.com/products/asos-design-knitted-textured-rib-jumper-with-all-over-floral-in-lilac/201574346-2?$n_640w$&wid=513&fit=constrain',
-        title:'knitted textured rib jumper',
-        isNew:false,
-        price:26.99,
-    },
-  ]
+  const {data, loading, error} = useFetch(`/products?populate=*&[filters][categories][id][$eq]=${catId}
+  ${selectedSubCats.map(item =>`&[filters][sub_categories][id][$eq]=${item}`)}&[filters][price][$lte]=${rangeValue}
+  ${sort ? `&sort=price:${sort}` : ''}`);
+
+  const handleChange = (e) => {
+    const value = e.target.value
+    const isChecked = e.target.checked
+    setselectedSubCats(isChecked ? [...selectedSubCats, value] : selectedSubCats.filter((item) => item !== value))
+  }
 
   const location = useLocation();
   const title = location.state;
+
+  const [state, setState] = useState(false)
+
+  useEffect(()=> {
+    setState(true)
+  },[])
+
   return (
-  <div className="relative">
+  <div className={`relative ${state ? 'opacity-100' : 'opacity-0'} transition-all duration-[1500ms]`}>
     <header className="relative">
         <img className='w-full h-full' src={heroImg} alt=""></img>
         <span className="uppercase absolute top-0 bottom-0 left-0 right-0 m-auto text-7xl h-20 w-fit text-white font-bold tracking-wide">{title}</span>
@@ -72,7 +56,7 @@ const Products = () => {
       </div> 
     </div>
     <FilterDrawer state={drawerState} setState={setDrawerState} rangeValue={rangeValue} setRangeValue={setRangeValue}
-      setSort={setSort}
+      setSort={setSort} handleChange={handleChange} catId={catId}
     />
   </div>
   )

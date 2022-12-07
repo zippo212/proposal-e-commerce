@@ -41,10 +41,10 @@ const MobileMenu = ({state,setState}) => {
                         </button>
                         <ul  className={`${collapsableState ? 'invisible opacity-0 h-0' : 'visible opacity-100 h-16'} transition-all duration-500 text-xl font-light`}>
                             <li className='py-1'>
-                                <Link to="/products/1" state={'Women'}>WOMEN</Link>
+                                <Link to="/products/2" state={'Women'}>WOMEN</Link>
                             </li>
                             <li className='py-1'>
-                                <Link to="/products/2" state={'Men'}>MEN</Link>
+                                <Link to="/products/1" state={'Men'}>MEN</Link>
                             </li>
                             <li className='py-1'>
                                 <Link to="/products/3" state={'Accessories'}>ACCESSORIES</Link>

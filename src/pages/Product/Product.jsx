@@ -1,21 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowLongRightIcon,PlusSmallIcon,MinusSmallIcon } from '@heroicons/react/24/outline'
 import {
   FacebookIcon,
   TwitterIcon,
   PinterestIcon,
 } from "react-share";
+import useFetch from '../../hooks/useFetch';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/cartReducer';
 
-
-const data = [
-  'https://images.asos-media.com/products/asos-design-knitted-textured-rib-jumper-with-all-over-floral-in-lilac/201574346-1-lilac?$n_640w$&wid=513&fit=constrain',
-  'https://images.asos-media.com/products/asos-design-oversized-borg-western-jacket-in-black/202822022-1-black?$n_640w$&wid=513&fit=constrain',
-  'https://images.asos-media.com/products/asos-design-oversized-borg-western-jacket-in-black/202822022-4?$n_640w$&wid=513&fit=constrain',
-  'https://images.asos-media.com/products/asos-design-knitted-textured-rib-jumper-with-all-over-floral-in-lilac/201574346-2?$n_640w$&wid=513&fit=constrain',
-]
 
 const Product = () => {
-  const [currentImg, setCurrentImg] = useState(100);
+  const id = useParams().id;
+  const [currentImg, setCurrentImg] = useState('100');
   const [size, setSize] = useState('S');
   const [quantity, setQuantity] = useState(1);
 
@@ -25,24 +23,33 @@ const Product = () => {
     } else return
   }
 
+  const dispatch = useDispatch();
+  const {data, loading, error} = useFetch(`/products/${id}?populate=*`);
+
+  const [state, setState] = useState(false)
+
+  useEffect(()=> {
+    setState(true)
+  },[])
+
   return (
-    <div className='py-7 sm:py-14 px-2 sm:px-10 mx-auto max-w-[1300px]'>
+    <div className={`py-7 sm:py-14 px-2 sm:px-10 mx-auto max-w-[1300px] ${state ? 'opacity-100' : 'opacity-0'} transition-all duration-[1000ms]`}>
       <div className='flex flex-col sm:flex-row'>
         <div className='w-full sm:w-[40%] sm:overflow-hidden flex flex-row sm:flex-col'>
           <div className={`relative w-[80%] sm:w-full overflow-hidden`}>
-            <div className={`-translate-x-[${currentImg}%] flex transition-all duration-400 relative`}>
-              <img className="w-full translate-x-0" src={data[0]} alt=""/>
-              <img className="w-full translate-x-100%" src={data[1]} alt=""/>
-              <img className="w-full translate-x-200%" src={data[2]} alt=""/>
-              <img className="w-full translate-x-300%" src={data[3]} alt=""/>
+            <div className='flex transition-all duration-400 relative' style={{transform: `translateX(-${currentImg}%)`}}>
+              <img className="w-full translate-x-0" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img?.data?.attributes.url} alt=""/>
+              <img className="w-full translate-x-100%" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img2?.data?.attributes.url} alt=""/>
+              <img className="w-full translate-x-200%" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img3?.data?.attributes.url} alt=""/>
+              <img className="w-full translate-x-300%" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img4?.data?.attributes.url} alt=""/>
             </div>
           </div>
           <div className="sm:mt-5 w-[20%] sm:w-full">
             <div className='h-full flex flex-col sm:flex-row justify-between items-end sm:space-x-3 sm:justify-start pl-2 sm:pl-0 overflow-x-auto'>
-              <img className={`max-w-full sm:max-w-[80px] ${currentImg === 0 ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={data[0]} alt="" onClick={()=>setCurrentImg(0)}/>
-              <img className={`max-w-full sm:max-w-[80px] ${currentImg === 100 ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={data[1]} alt="" onClick={()=>setCurrentImg(100)}/>
-              <img className={`max-w-full sm:max-w-[80px] ${currentImg === 200 ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={data[2]} alt="" onClick={()=>setCurrentImg(200)}/>
-              <img className={`max-w-full sm:max-w-[80px] ${currentImg === 300 ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={data[3]} alt="" onClick={()=>setCurrentImg(300)}/>
+              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '0' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img?.data?.attributes.url} alt="" onClick={()=>setCurrentImg('0')}/>
+              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '100' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img2?.data?.attributes.url} alt="" onClick={()=>setCurrentImg('100')}/>
+              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '200' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img3?.data?.attributes.url} alt="" onClick={()=>setCurrentImg('200')}/>
+              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '300' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img4?.data?.attributes.url} alt="" onClick={()=>setCurrentImg('300')}/>
             </div>
           </div>
         </div>
@@ -50,11 +57,11 @@ const Product = () => {
           <div className='sm:pl-11'>
             <div className='mb-6'>
               <div className='tracking-[0.2em] font-medium text-[#1c1d1d]'>PROPOSAL</div>
-              <h1 className='text-5xl mb-2 font-bold uppercase'>Product name</h1>
+              <h1 className='text-5xl mb-2 font-bold uppercase'>{data?.attributes?.title}</h1>
             </div>
             <div>
               <div className='mb-6'>
-                <span className='text-2xl'>$69.69</span>
+                <span className='text-2xl'>${(data?.attributes?.price)}</span>
                 <span className='mt-2 text-xl block font-light'>Shipping calculated at checkout</span>
               </div>
               <div className='mb-6'>
@@ -110,7 +117,16 @@ const Product = () => {
                   </div>
               </div>
               <div className='mb-6'>
-                <button className='border border-black py-2 px-4 w-[50%] relative group overflow-hidden'>
+                <button className='border border-black py-2 px-4 w-[50%] relative group overflow-hidden'
+                onClick={()=>dispatch(addToCart({
+                  id:data.id+size,
+                  title:data.attributes.title,
+                  price:data.attributes.price,
+                  img:data.attributes.img.data.attributes.url,
+                  quantity,
+                  size,
+                }))}
+                >
                   <span className='uppercase text-2xl font-bold group-hover:pr-7 transition-all duration-300'>Add to cart</span>
                   <ArrowLongRightIcon className="h-7 absolute top-0 bottom-0 my-auto -right-7 group-hover:right-7 transition-all duration-300"/>
                 </button>
@@ -118,19 +134,21 @@ const Product = () => {
               <div className='mb-6'>
                 <p className='mb-6 text-lg'>
                   <strong>Product Details:</strong>
-                  <br/>
-                  -"Himbo Gym" graphic screen print on front chest and center back
-                  <br/>
-                  -Taped seams, shoulder to shoulder
-                  <br/>
-                  -Made in the USA<span> with Union Labor support</span>
+                  {data?.attributes?.details.split('\n').map((item,i)=> (
+                    <span key={i}>
+                    <br/>
+                    <span>-{item}</span>
+                    </span>
+                  ))}
                 </p>
                 <p className='text-xl'>
                   <strong>Care and Fiber:</strong>
-                  <br/>
-                  <span>-100% pre-shrunk cotton</span>
-                  <br/>
-                  <span>-Wash inside out on cold with like colors - Hang dry</span>
+                  {data?.attributes?.care.split('\n').map((item,i)=> (
+                    <span key={i}>
+                    <br/>
+                    <span>-{item}</span>
+                    </span>
+                  ))}
                 </p>
               </div>
               <div className='mt-6 sm:mt-10 flex items-center space-x-5'>

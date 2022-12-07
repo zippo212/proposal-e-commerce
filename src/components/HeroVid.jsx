@@ -1,10 +1,9 @@
-import heroVid from '../img/hero.mp4';
+import heroVid from '../img/hero3.mp4';
 
 const HeroVid = () => {
   return (
     <div>
-        <video loop autoPlay muted>
-            <source src={heroVid} type="video/mp4"/>
+        <video src={heroVid} loop autoPlay muted type="video/mp4">
         </video>
     </div>
   )
