@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import ScrollToTop from "./hooks/ScrollToTop";
 import Home from "./pages/Home/Home";
 import Product from "./pages/Product/Product";
 import Products from "./pages/Products/Products";
@@ -13,6 +14,7 @@ const Layout = () =>{
   return (
     <div className="app">
       <Navbar/>
+      <ScrollToTop/>
       <Outlet/>
       <Footer/>
     </div>

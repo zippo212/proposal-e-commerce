@@ -46,9 +46,6 @@ const MobileMenu = ({state,setState}) => {
                             <li className='py-1'>
                                 <Link to="/products/1" state={'Men'}>MEN</Link>
                             </li>
-                            <li className='py-1'>
-                                <Link to="/products/3" state={'Accessories'}>ACCESSORIES</Link>
-                            </li>
                         </ul>
                     </div>
                 </div>

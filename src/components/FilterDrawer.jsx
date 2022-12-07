@@ -24,7 +24,7 @@ const FilterDrawer = ({state,setState,rangeValue,setRangeValue,setSort,handleCha
 
 
   return (
-    <div className={`fixed w-80 sm:w-96 bg-white top-0 bottom-0 ${state ? '-translate-x-[0%]' : '-translate-x-[100%]'} transition-transform duration-500 drop-shadow-2xl will-change-transform z-50`}>
+    <div className={`fixed w-80 sm:w-96 bg-white top-0 bottom-0 ${state ? '-translate-x-[0%]' : '-translate-x-[100%]'} transition-transform duration-500 drop-shadow-2xl will-change-transform z-40`}>
         <div className="h-full flex flex-col">
 
             <div className="px-4 sm:px-10 h-24">
