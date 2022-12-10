@@ -11,7 +11,8 @@ const MobileMenu = ({state,setState}) => {
     }
 
   return (
-        <div className={`fixed w-[350px] sm:w-[420px] bg-white top-0 bottom-0 -right-[420px] ${state ? '-translate-x-[420px]' : 'translate-x-0'} transition-transform duration-500 drop-shadow-2xl z-40`}>        <div className="h-full flex flex-col">
+        <div className={`fixed w-[350px] sm:w-[420px] bg-white top-0 bottom-0 -right-[420px] ${state ? '-translate-x-[420px]' : 'translate-x-0'} transition-transform duration-500 drop-shadow-2xl z-40`}>        
+        <div className="h-full flex flex-col">
             <div className="px-4 sm:px-10 h-24">
                 <div className="py-4 flex justify-between items-center border-b border-[#e8e8e1]">
                     <div className="uppercase font-bold text-5xl leading-tight"></div>

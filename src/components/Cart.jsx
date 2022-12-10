@@ -1,6 +1,9 @@
 import { XMarkIcon, ArrowLongRightIcon,TrashIcon } from "@heroicons/react/24/outline"
 import { useDispatch, useSelector } from "react-redux"
 import { removeItem, resetCart } from "../redux/cartReducer";
+import { loadStripe } from '@stripe/stripe-js';
+import { makeRequest } from '../makeRequest'
+
 
 const Cart = ({state,setState}) => {
     const dispatch = useDispatch();
@@ -14,8 +17,23 @@ const Cart = ({state,setState}) => {
         return totalPrice
     }
 
+    const stripePromise = loadStripe('pk_test_51MCNb3JZPcDKbxtjrBy0KgQk0OUuj9vi5Zk4Yuwlt9repT6CMyACRriHbFDBEgcNVSelwM9nJSuJi7FtXeBpApZh00Ve39ShQy');
+
+    const handlePayment = async () => {
+        try{
+            const stripe = await stripePromise
+            const res = await makeRequest.post('/orders',{
+                products
+            });
+            await stripe.redirectToCheckout({
+                sessionId: res.data.stripeSession.id,
+            })
+        } catch(err) {
+            console.log(err)
+        }
+    }
   return (
-    <div className={`fixed w-[350px] sm:w-[420px] bg-white top-0 bottom-0 right-0  ${state ? '-translate-x-[0%]' : 'translate-x-[100%]'} transition-transform duration-500 drop-shadow-2xl z-40 will-change-transform`}>
+    <div className={`fixed w-[350px] sm:w-[420px] bg-white top-0 bottom-0 right-0  ${state ? '-translate-x-[0%]' : 'translate-x-[105%]'} transition-transform duration-500 drop-shadow-xl z-40 will-change-transform`}>
         <div className="h-full flex flex-col">
 
             <div className="px-4 sm:px-10 h-24">
@@ -29,14 +47,14 @@ const Cart = ({state,setState}) => {
                 </div>
             </div>
 
-            <div className='pt-10 px-4 sm:px-10 h-full'>
+            <div className='pt-10 px-4 sm:px-10 h-[calc(100%-6rem)]'>
                 <div className='flex flex-col h-full -mt-5'>
                 <div className="overflow-y-auto">
                 {products.map((item) => (
                     <div className="flex gap-5 border-b border-[#e8e8e1] py-5" key={item.id}>
                         <div className="w-3/12">
                             <a href={`/product/${item.id.slice(0,-1)}`}>
-                                <img src={process.env.REACT_APP_UPLOAD_URL+item.img} alt=""></img>
+                                <img src={process.env.REACT_APP_UPLOAD_URL+item.img} alt="product item"></img>
                             </a>
                         </div>
                         <div className="w-9/12">
@@ -65,7 +83,7 @@ const Cart = ({state,setState}) => {
                         >Clear</div>
                         <div className="flex justify-between mb-5">
                             <div className="font-sans font-bold tracking-[0.2em]">SUBTOTAL</div>
-                            <span className="block text-2xl leading-6">{total().toFixed(2)}</span>
+                            <span className="block text-2xl leading-6">${total().toFixed(2)}</span>
                         </div>
                         <div className="text-center mb-5">
                             <small>
@@ -74,7 +92,9 @@ const Cart = ({state,setState}) => {
                             </small>
                         </div>
                         <div>
-                        <button className='bg-black text-white py-2 px-4 w-full relative group overflow-hidden'>
+                        <button className='bg-black text-white py-2 px-4 w-full relative group overflow-hidden'
+                        onClick={handlePayment}
+                        >
                             <span className='uppercase text-xl font-bold group-hover:pr-7 transition-all duration-300'>Check out</span>
                             <ArrowLongRightIcon className="h-7 absolute top-0 bottom-0 my-auto -right-7 group-hover:right-7 transition-all duration-300"/>
                         </button>

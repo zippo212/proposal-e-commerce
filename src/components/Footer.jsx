@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { EnvelopeIcon } from '@heroicons/react/24/outline'
 import { SocialIcon } from 'react-social-icons';
 import logo from '../img/logo.png';
+import stripe from '../img/Powered_By_Stripe.png';
 
 
 
@@ -13,7 +14,7 @@ const Footer = () => {
           <div className='md:w-[25%] md:pl-7 flex items-center md:flex-col'>
               <div className='mb-6 mr-6 md:mr-0'>
                 <Link to="/" className='flex items-center'>
-                    <img src={logo} alt='' className='h-full'></img>
+                    <img src={logo} alt='proposal logo' className='h-full'></img>
                 </Link>
               </div>
               <ul className='flex'>
@@ -64,10 +65,10 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className='pt-9 px-10 mx-auto max-w-[1300px]'>
-          <div className='px-5 pb-5 text-center relative'>
+        <div className='pt-9 px-2 sm:px-10 mx-auto max-w-[1300px]'>
+          <div className='px-0 sm:px-5 pb-5 text-left sm:text-center relative'>
             <span className='font-semibold text-sm'>© 2022 PROPOSAL . All Rights Reserved.</span>
-            <img src='img/Powered_By_Stripe.png' alt="" className='absolute right-0 top-0 h-6'/>
+            <img src={stripe} alt="stripe logo" className='absolute right-0 top-0 h-6'/>
           </div>
         </div>
     </footer>

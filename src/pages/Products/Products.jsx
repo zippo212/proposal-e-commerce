@@ -2,10 +2,10 @@ import { useLocation, useParams } from "react-router-dom";
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline'
 import Card from "../../components/Card";
 import FilterDrawer from "../../components/FilterDrawer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import heroImg from '../../img/prod.jpg';
 import useFetch from "../../hooks/useFetch";
-
+import Logo from '../../img/logobig.png'
 
 const Products = () => {
   const [drawerState, setDrawerState] = useState(false);
@@ -16,7 +16,7 @@ const Products = () => {
   const [selectedSubCats, setselectedSubCats] = useState([]);
 
   const {data, loading, error} = useFetch(`/products?populate=*&[filters][categories][id][$eq]=${catId}
-  ${selectedSubCats.map(item =>`&[filters][sub_categories][id][$eq]=${item}`)}&[filters][price][$lte]=${rangeValue}
+  ${selectedSubCats.map(item =>`&[filters][sub_categories][id][$eq]=${item}`).join('')}&[filters][price][$lte]=${rangeValue}
   ${sort ? `&sort=price:${sort}` : ''}`);
 
   const handleChange = (e) => {
@@ -28,16 +28,17 @@ const Products = () => {
   const location = useLocation();
   const title = location.state;
 
-  const [state, setState] = useState(false)
-
-  useEffect(()=> {
-    setState(true)
-  },[])
-
   return (
-  <div className={`relative ${state ? 'opacity-100' : 'opacity-0'} transition-all duration-[1500ms]`}>
+    <>
+  <div className='relative h-[90vh] w-full' hidden={!loading}>
+    <div className='absolute text-6xl h-[236px] w-[393px] top-0 bottom-0 left-0 right-0 m-auto animate-wiggle'>
+      <img className="animate-pulse" src={Logo} alt='proposal logo'/>
+    </div>
+  </div>
+  {error ? 'Something went wrong' :
+  <div className={`relative ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-1000`}>
     <header className="relative">
-        <img className='w-full h-full' src={heroImg} alt=""></img>
+        <img className='w-full h-full' src={heroImg} alt="banner of young fashionable individuales"></img>
         <span className="uppercase absolute top-0 bottom-0 left-0 right-0 m-auto text-7xl h-20 w-fit text-white font-bold tracking-wide">{title}</span>
     </header>
     <div className={`py-7 sm:py-14 px-2 md:px-10 mx-auto max-w-[1300px] ${drawerState ? 'blur-sm' : 'blur-none'}`}>
@@ -52,13 +53,15 @@ const Products = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        {data.map(item => (<Card data={item} key={item.id} size={['h-full','w-full']}/>))}
+        {data.map(item => (<Card data={item} key={item.id} size={['h-full','w-full']} loading={loading}/>))}
       </div> 
     </div>
+  </div>
+   }
     <FilterDrawer state={drawerState} setState={setDrawerState} rangeValue={rangeValue} setRangeValue={setRangeValue}
       setSort={setSort} handleChange={handleChange} catId={catId}
     />
-  </div>
+    </>
   )
 }
 

@@ -6,7 +6,7 @@ const FeaturedProducts = ({type}) => {
     const {data, loading, error} = useFetch(`/products?populate=*&[filters][type][$eq]=${type}`)
   return (
     
-    <div className={`my-24`}>
+    <div className='my-24'>
         <div className='px-10 mx-auto max-w-[1300px]'>
             <div className='text-center mb-12'>
                 <h2 className='text-5xl font-bold uppercase'>{type} PRODUCTS</h2>

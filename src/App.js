@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./hooks/ScrollToTop";
 import Home from "./pages/Home/Home";
+import NotFound from "./pages/NotFound";
 import Product from "./pages/Product/Product";
 import Products from "./pages/Products/Products";
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element:<Product />
+      },
+      {
+        path: "*",
+        element:<NotFound />
       }
     ]
   }

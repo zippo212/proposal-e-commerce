@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import ph from '../img/ph.png';
 
 const Card = ({data,size,loading}) => {
   return (
@@ -8,10 +7,10 @@ const Card = ({data,size,loading}) => {
             <Link to={`/product/${data?.id}`}>
                 <div className={`relative ${size[0]} sm:h-full ${size[1]} sm:w-full`}>
                     <div className="h-full w-full">
-                        <img className='h-full w-full' src={loading ? ph : process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img?.data?.attributes.url} alt=''></img>
+                        <img className='h-full w-full' src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img?.data?.attributes.url} alt='main'></img>
                     </div>
                     <div className='absolute top-0 h-full w-full opacity-0 hover:opacity-100 transition-all ease-in-out duration-400'>
-                        <img className='h-full w-full' src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img2?.data?.attributes.url} alt=''></img>
+                        <img className='h-full w-full' src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img2?.data?.attributes.url} alt='second'></img>
                     </div>
                     <div className='absolute bg-white bottom-0 py-2.5 pl-3.5 pr-5'>
                         <span className='text-2xl leading-5'>

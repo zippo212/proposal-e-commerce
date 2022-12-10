@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ArrowLongRightIcon,PlusSmallIcon,MinusSmallIcon } from '@heroicons/react/24/outline'
 import {
   FacebookIcon,
@@ -9,6 +9,8 @@ import useFetch from '../../hooks/useFetch';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartReducer';
+import Logo from '../../img/logobig.png'
+
 
 
 const Product = () => {
@@ -26,30 +28,31 @@ const Product = () => {
   const dispatch = useDispatch();
   const {data, loading, error} = useFetch(`/products/${id}?populate=*`);
 
-  const [state, setState] = useState(false)
-
-  useEffect(()=> {
-    setState(true)
-  },[])
-
   return (
-    <div className={`py-7 sm:py-14 px-2 sm:px-10 mx-auto max-w-[1300px] ${state ? 'opacity-100' : 'opacity-0'} transition-all duration-[1000ms]`}>
+    <>
+    <div className='relative h-[90vh] w-full' hidden={!loading}>
+      <div className='absolute text-6xl h-[236px] w-[393px] top-0 bottom-0 left-0 right-0 m-auto animate-wiggle'>
+        <img className="animate-pulse" src={Logo} alt='proposal logo'/>
+      </div>
+    </div>
+    {error ? 'Something went wrong' :
+    <div className={`py-7 sm:py-14 px-2 sm:px-10 mx-auto max-w-[1300px] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-1000`}>
       <div className='flex flex-col sm:flex-row'>
         <div className='w-full sm:w-[40%] sm:overflow-hidden flex flex-row sm:flex-col'>
           <div className={`relative w-[80%] sm:w-full overflow-hidden`}>
             <div className='flex transition-all duration-400 relative' style={{transform: `translateX(-${currentImg}%)`}}>
-              <img className="w-full translate-x-0" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img?.data?.attributes.url} alt=""/>
-              <img className="w-full translate-x-100%" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img2?.data?.attributes.url} alt=""/>
-              <img className="w-full translate-x-200%" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img3?.data?.attributes.url} alt=""/>
-              <img className="w-full translate-x-300%" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img4?.data?.attributes.url} alt=""/>
+              <img className="w-full translate-x-0" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img?.data?.attributes.url} alt="product 1"/>
+              <img className="w-full translate-x-100%" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img2?.data?.attributes.url} alt="product 2"/>
+              <img className="w-full translate-x-200%" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img3?.data?.attributes.url} alt="product 3"/>
+              <img className="w-full translate-x-300%" src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img4?.data?.attributes.url} alt="product 4"/>
             </div>
           </div>
           <div className="sm:mt-5 w-[20%] sm:w-full">
             <div className='h-full flex flex-col sm:flex-row justify-between items-end sm:space-x-3 sm:justify-start pl-2 sm:pl-0 overflow-x-auto'>
-              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '0' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img?.data?.attributes.url} alt="" onClick={()=>setCurrentImg('0')}/>
-              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '100' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img2?.data?.attributes.url} alt="" onClick={()=>setCurrentImg('100')}/>
-              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '200' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img3?.data?.attributes.url} alt="" onClick={()=>setCurrentImg('200')}/>
-              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '300' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img4?.data?.attributes.url} alt="" onClick={()=>setCurrentImg('300')}/>
+              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '0' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img?.data?.attributes.url} alt="small choice 1" onClick={()=>setCurrentImg('0')}/>
+              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '100' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img2?.data?.attributes.url} alt="small choice 2" onClick={()=>setCurrentImg('100')}/>
+              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '200' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img3?.data?.attributes.url} alt="small choice 3" onClick={()=>setCurrentImg('200')}/>
+              <img className={`max-w-full sm:max-w-[80px] ${currentImg === '300' ? 'border-2 border-black' : 'border-2 border-transparent'} cursor-pointer transition-all duration-150`} src={process.env.REACT_APP_UPLOAD_URL+data?.attributes?.img4?.data?.attributes.url} alt="small choice 4" onClick={()=>setCurrentImg('300')}/>
             </div>
           </div>
         </div>
@@ -170,6 +173,8 @@ const Product = () => {
         </div>
       </div>
     </div>
+    }
+    </>
   )
 }
 

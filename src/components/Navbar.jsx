@@ -12,11 +12,11 @@ const Navbar = () => {
     const products = useSelector(state=>state.cart.products)
 
   return (
-    <header className='bg-[#f4f4f4] sticky top-0 z-40 shadow-2xl will-change-auto'>
+    <header className='bg-[#f4f4f4] sticky top-0 z-40 shadow-lg will-change-auto'>
         <div className='px-5 sm:px-10 mx-auto max-w-[1300px]'>
             <div className='flex justify-between sm:justify-start w-full'>
                 <Link to="/" className='flex items-center'>
-                    <img src={logo} alt='' className='h-[80%]'></img>
+                    <img src={logo} alt='proposal logo' className='h-[80%]'></img>
                 </Link>
                 <div className='hidden sm:flex mx-auto items-center'>
                     <ul className='flex text-xl font-semibold'>
