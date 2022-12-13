@@ -30,8 +30,8 @@ const Product = () => {
 
   return (
     <>
-    <div className='relative h-[90vh] w-full' hidden={!loading}>
-      <div className='absolute text-6xl h-[189px] sm:h-[236px] w-[315px] sm:w-[393px] top-0 bottom-0 left-0 right-0 m-auto animate-wiggle'>
+    <div className='fixed h-screen w-full z-20 bg-white' hidden={!loading}>
+      <div className='fixed text-6xl h-[189px] sm:h-[236px] w-[315px] sm:w-[393px] top-0 bottom-0 left-0 right-0 m-auto animate-wiggle'>
         <img className="animate-pulse" src={Logo} alt='proposal logo'/>
       </div>
     </div>
