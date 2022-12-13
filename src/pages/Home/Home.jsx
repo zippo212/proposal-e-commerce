@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <>
     <div className='relative h-[90vh] w-full' hidden={state}>
-      <div className='absolute text-6xl h-[236px] w-[393px] top-0 bottom-0 left-0 right-0 m-auto overflow-hidden'>
+      <div className='absolute text-6xl h-[189px] sm:h-[236px] w-[315px] sm:w-[393px] top-0 bottom-0 left-0 right-0 m-auto overflow-hidden'>
         <img className={`${open ? 'translate-y-[0%]' : 'translate-y-[105%]'} transition-all ease-in-out duration-1000`} src={Logo} alt='proposal logo'/>
       </div>
       <Confetti
@@ -33,13 +33,13 @@ const Home = () => {
         gravity={0.6}
       />
     </div>
-    <div className={`${state ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}>
-      <HeroVid/>
-      <FeaturedProducts type={'featured'}/>
-      <Categories/>
-      <FeaturedProducts type={'trending'}/>
-      <SocialSlider/>
-    </div>
+      <div className={`${state ? 'opacity-100' : 'opacity-0'} transition-opacity delay-75 duration-1000`}>
+        <HeroVid/>
+        <FeaturedProducts type={'featured'}/>
+        <Categories/>
+        <FeaturedProducts type={'trending'}/>
+        <SocialSlider/>
+      </div>
     </>
   )
 }

@@ -24,7 +24,7 @@ const SocialSlider = () => {
           });
 
         gsap.to(box.current, {
-            duration: 18,
+            duration: 15,
             ease: "none",
             x: "+=1750", //move each box 1750px to right
             modifiers: {

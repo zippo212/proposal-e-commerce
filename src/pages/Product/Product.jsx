@@ -31,12 +31,12 @@ const Product = () => {
   return (
     <>
     <div className='relative h-[90vh] w-full' hidden={!loading}>
-      <div className='absolute text-6xl h-[236px] w-[393px] top-0 bottom-0 left-0 right-0 m-auto animate-wiggle'>
+      <div className='absolute text-6xl h-[189px] sm:h-[236px] w-[315px] sm:w-[393px] top-0 bottom-0 left-0 right-0 m-auto animate-wiggle'>
         <img className="animate-pulse" src={Logo} alt='proposal logo'/>
       </div>
     </div>
     {error ? 'Something went wrong' :
-    <div className={`py-7 sm:py-14 px-2 sm:px-10 mx-auto max-w-[1300px] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-1000`}>
+    <div className={`py-7 sm:py-14 px-2 sm:px-10 mx-auto max-w-[1300px] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity delay-75 duration-1000`}>
       <div className='flex flex-col sm:flex-row'>
         <div className='w-full sm:w-[40%] sm:overflow-hidden flex flex-row sm:flex-col'>
           <div className={`relative w-[80%] sm:w-full overflow-hidden`}>
@@ -122,7 +122,7 @@ const Product = () => {
               <div className='mb-6'>
                 <button className='border border-black py-2 px-4 w-[50%] relative group overflow-hidden'
                 onClick={()=>dispatch(addToCart({
-                  id:data.id+size,
+                  id:data.id+' '+size,
                   title:data.attributes.title,
                   price:data.attributes.price,
                   img:data.attributes.img.data.attributes.url,

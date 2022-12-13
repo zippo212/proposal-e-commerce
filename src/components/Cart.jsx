@@ -32,6 +32,8 @@ const Cart = ({state,setState}) => {
             console.log(err)
         }
     }
+
+    console.log(products.map((item)=> (item.id)))
   return (
     <div className={`fixed w-[350px] sm:w-[420px] bg-white top-0 bottom-0 right-0  ${state ? '-translate-x-[0%]' : 'translate-x-[105%]'} transition-transform duration-500 drop-shadow-xl z-40 will-change-transform`}>
         <div className="h-full flex flex-col">
@@ -53,12 +55,12 @@ const Cart = ({state,setState}) => {
                 {products.map((item) => (
                     <div className="flex gap-5 border-b border-[#e8e8e1] py-5" key={item.id}>
                         <div className="w-3/12">
-                            <a href={`/product/${item.id.slice(0,-1)}`}>
+                            <a href={`/product/${item.id.split(' ')[0]}`}>
                                 <img src={process.env.REACT_APP_UPLOAD_URL+item.img} alt="product item"></img>
                             </a>
                         </div>
                         <div className="w-9/12">
-                            <a href={`/product/${item.id.slice(0,-1)}`} className="mb-2.5 text-xl capitalize block align-top leading-4">{item.title}</a>
+                            <a href={`/product/${item.id.split(' ')[0]}`} className="mb-2.5 text-xl capitalize block align-top leading-4">{item.title}</a>
                             <div className="mb-2.5 text-lg font-medium uppercase">{item.size}</div>
                             <div className="flex justify-between items-center">
                                 <div className="min-w-[90px] relative border border-[#e8e8e1] flex items-center justify-between">

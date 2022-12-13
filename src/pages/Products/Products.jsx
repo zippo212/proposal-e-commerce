@@ -36,7 +36,7 @@ const Products = () => {
     </div>
   </div>
   {error ? 'Something went wrong' :
-  <div className={`relative ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-1000`}>
+  <div className={`relative ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity delay-75 duration-1000`}>
     <header className="relative">
         <img className='w-full h-full' src={heroImg} alt="banner of young fashionable individuales"></img>
         <span className="uppercase absolute top-0 bottom-0 left-0 right-0 m-auto text-7xl h-20 w-fit text-white font-bold tracking-wide">{title}</span>
