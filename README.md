@@ -41,7 +41,7 @@ $ npm install
 
 ## You may also like...
 
-- [Proposal](https://github.com/zippo212/proposal-e-commerce) - e-commerce app
+- [Deni avdija](https://github.com/zippo212/deni-avdija) - stats tracking app
 - [Missing semicolon](https://github.com/zippo212/tech-blog) - blog site
 - [Kanban](https://github.com/zippo212/kanban-board) - kanban management app
 
