@@ -27,7 +27,7 @@
 
 ## How To Use
 
-A live version of the web app is available [Here](https://kanban-board-management.vercel.app)
+A live version of the web app is available [Here](https://proposal-e-commerce.vercel.app)
 
 ```bash
 # Clone this repository
