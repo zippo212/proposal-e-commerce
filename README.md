@@ -33,7 +33,7 @@ A live version of the web app is available [Here](https://github.com/zippo212/pr
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/zippo212/kanban-board.git
+$ git clone https://github.com/zippo212/proposal-e-commerce.git
 
 # Install dependencies
 $ npm install
