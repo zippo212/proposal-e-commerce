@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <br>
+  <a href="https://proposal-e-commerce.vercel.app/"><img src="https://github.com/zippo212/proposal-e-commerce/blob/main/src/img/logo.png" alt="Proposal Logo" width="140"></a>
+  <br>
+  <br>
+  Proposal e-commerce
+  <br>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#license">License</a>
+</p>
 
-## Available Scripts
+<p align="center">
+  <img src="https://github.com/zippo212/proposal-e-commerce/blob/main/src/img/propsal.gif" alt="screenshot">
+</p>
 
-In the project directory, you can run:
+## Key Features
 
-### `npm start`
+* Responsive Design: Our e-commerce app is designed to adapt to different screen sizes and devices, ensuring that the user experience is optimal on both desktop and mobile devices.
+* Product Listing and Filtering: Users can browse through a wide range of products, filter them by category, price range, and more.
+* Product Detail Page: Each product has a dedicated page that provides detailed information such as images, description, and reviews.
+* Shopping Cart: Users can add items to their shopping cart and view the total cost of their purchase.
+* Checkout: Users can proceed to checkout, enter their shipping and billing information, and select their preferred payment method.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## How To Use
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+A live version of the web app is available [Here](https://kanban-board-management.vercel.app)
 
-### `npm test`
+```bash
+# Clone this repository
+$ git clone https://github.com/zippo212/kanban-board.git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Install dependencies
+$ npm install
+```
+* Start the development server by running `npm start` or `yarn start`. This will start the server at http://localhost:3000 and will automatically reload the page as you make changes to the code.
+* To build the production version of the app, run `npm run build` or `yarn build`. This will create a build folder in the root of the project, which you can then serve using a static server.
 
-### `npm run build`
+## You may also like...
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Pomolectron](https://github.com/amitmerchant1990/pomolectron) - A pomodoro app
+- [Correo](https://github.com/amitmerchant1990/correo) - A menubar/taskbar Gmail App for Windows and macOS
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+MIT
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> [Portfolio](https://portfolio-zippo212.vercel.app/) &nbsp;
+> GitHub [@zippo212](https://github.com/zippo212)
