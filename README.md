@@ -27,7 +27,7 @@
 
 ## How To Use
 
-A live version of the web app is available [Here](https://proposal-e-commerce.vercel.app)
+A live version of the web app is available [Here](https://github.com/zippo212/proposal-e-commerce.git)
 
 ```bash
 # Clone this repository
