@@ -41,8 +41,9 @@ $ npm install
 
 ## You may also like...
 
-- [Pomolectron](https://github.com/amitmerchant1990/pomolectron) - A pomodoro app
-- [Correo](https://github.com/amitmerchant1990/correo) - A menubar/taskbar Gmail App for Windows and macOS
+- [Proposal](https://github.com/zippo212/proposal-e-commerce) - e-commerce app
+- [Missing semicolon](https://github.com/zippo212/tech-blog) - blog site
+- [Kanban](https://github.com/zippo212/kanban-board) - kanban management app
 
 ## License
 
